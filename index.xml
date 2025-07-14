@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Machine Learning</title>
+      <link>https://quartz.jzhao.xyz</link>
+      <description>Last 10 notes on Machine Learning</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>00-Roadmap</title>
+    <link>https://quartz.jzhao.xyz/00-General/00-Roadmap</link>
+    <guid>https://quartz.jzhao.xyz/00-General/00-Roadmap</guid>
+    <description><![CDATA[ This roadmap outlines our shared journey through Machine Learning. ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>01-Project Structure</title>
+    <link>https://quartz.jzhao.xyz/00-General/01-Project-Structure</link>
+    <guid>https://quartz.jzhao.xyz/00-General/01-Project-Structure</guid>
+    <description><![CDATA[ 🗂️ Repository Structure Overview This is a collaborative Obsidian vault for learning and documenting Machine Learning topics, projects, and resources. ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>02-Contributing Guidelines</title>
+    <link>https://quartz.jzhao.xyz/00-General/02-Contributing-Guidelines</link>
+    <guid>https://quartz.jzhao.xyz/00-General/02-Contributing-Guidelines</guid>
+    <description><![CDATA[ 💾 General Workflow Pull before editing Push after committing One person = one personal notes file (e.g., Notes-JohnDoe.md) Shared files like Overview.md → edit only if you’ve pulled recently and no one else is working on it Do NOT change the folder structure without notice 🧠 Ownership File TypeWho... ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>01-Overview</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/01-Overview</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/01-Overview</guid>
+    <description><![CDATA[ Math Overview 📁 Topic Structure 📄 Overview (this file) 📚 Resources 💻 Code Examples 🧪 Exercises 🔍 Summary 📘 Key Concepts 🔎 Questions / Confusions 👥 Contributors’ Notes ✅ Learning Checklist. ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>02-Resources</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/02-Resources</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/02-Resources</guid>
+    <description><![CDATA[ 📺 Videos آمار و احتمال مهندسی - دکتر شریفی زارچی ⭐⭐⭐⭐⭐ 📖 Articles 📚 Books . ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>03-CodeExamples</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/03-CodeExamples</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/03-CodeExamples</guid>
+    <description><![CDATA[ 🧑‍💻 Code Examples ✅ example 📁 File Links Colab Notebook . ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>04-Notes-JohnDoe</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/04-Notes-JohnDoe</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/04-Notes-JohnDoe</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>04-Notes-Mehrdad</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/04-Notes-Mehrdad</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/04-Notes-Mehrdad</guid>
+    <description><![CDATA[ 📝Notes 🤔 Confusions 🔗 Progress 🧠 Ideas. ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>05-Exercises</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/05-Exercises</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Math-Foundation/05-Exercises</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item><item>
+    <title>01-Overview</title>
+    <link>https://quartz.jzhao.xyz/01-Topics/00-Python-Basics/01-Overview</link>
+    <guid>https://quartz.jzhao.xyz/01-Topics/00-Python-Basics/01-Overview</guid>
+    <description><![CDATA[ 🔍 Summary 📘 Key Concepts 🔎 Questions / Confusions 👥 Contributors’ Notes ✅ Learning Checklist. ]]></description>
+    <pubDate>Mon, 14 Jul 2025 12:22:18 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
