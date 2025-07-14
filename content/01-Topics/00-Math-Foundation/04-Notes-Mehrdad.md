@@ -1,0 +1,6 @@
+## 📝Notes
+
+## 🤔 Confusions
+
+## 🔗 Progress
+## 🧠 Ideas
