@@ -10,10 +10,10 @@ level: beginner
 
 ## 📁 Topic Structure
 
-- 📄 [Overview (this file)](01-Overview.md)
-- 📚 [Resources](02-Resources.md)
+- 📄 [Overview (this file)](content/01-Topics/00-Math-Foundation/01-Overview.md)
+- 📚 [Resources](content/01-Topics/00-Math-Foundation/02-Resources.md)
 - 💻 [Code Examples](03-CodeExamples/)
-- 🧪 [Exercises](05-Exercises.md)
+- 🧪 [Exercises](content/01-Topics/00-Math-Foundation/05-Exercises.md)
 
 ## 🔍 Summary
 
