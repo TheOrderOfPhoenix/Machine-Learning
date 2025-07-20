@@ -1,3 +1,6 @@
+---
+title: Training-Deep-Nets
+---
 ## 🔍 Summary
 
 ## 📘 Key Concepts

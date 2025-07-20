@@ -1,3 +1,6 @@
+---
+title: SVM
+---
 ## 🔍 Summary
 
 ## 📘 Key Concepts

@@ -1,3 +1,6 @@
+---
+title: CNNs
+---
 ## 🔍 Summary
 
 ## 📘 Key Concepts

@@ -1,3 +1,6 @@
+---
+title: Ensembles
+---
 ## 🔍 Summary
 
 ## 📘 Key Concepts

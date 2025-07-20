@@ -1,3 +1,7 @@
+---
+title: Classification
+---
+
 ## 🔍 Summary
 
 ## 📘 Key Concepts

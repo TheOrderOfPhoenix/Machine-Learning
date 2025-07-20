@@ -1,3 +1,7 @@
+---
+title: Autoencoders-GANs
+---
+
 ## 🔍 Summary
 
 ## 📘 Key Concepts

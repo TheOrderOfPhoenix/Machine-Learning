@@ -1,3 +1,6 @@
+---
+title: RNNs
+---
 ## 🔍 Summary
 
 ## 📘 Key Concepts

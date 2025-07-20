@@ -1,4 +1,5 @@
 ---
+title: Math-Foundation
 tags:
   - topic
   - fundamentals
@@ -6,6 +7,7 @@ topic: Math Fundamentals
 status: in progress
 level: beginner
 ---
+
 # Math Overview
 
 ## 📁 Topic Structure
@@ -24,5 +26,3 @@ level: beginner
 ## 👥 Contributors' Notes
 
 ## ✅ Learning Checklist
-
-
