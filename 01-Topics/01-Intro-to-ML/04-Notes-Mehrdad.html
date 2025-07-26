@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>04-Notes-Mehrdad</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="Machine Learning"/><meta property="og:title" content="04-Notes-Mehrdad"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="04-Notes-Mehrdad"/><meta name="twitter:description" content="Definitions Machine Learning is the science (and art) of programming computers so they can learn from data [Machine Learning is the] field of study that gives computers the ability to learn without being explicitly programmed."/><meta property="og:description" content="Definitions Machine Learning is the science (and art) of programming computers so they can learn from data [Machine Learning is the] field of study that gives computers the ability to learn without being explicitly programmed."/><meta property="og:image:alt" content="Definitions Machine Learning is the science (and art) of programming computers so they can learn from data [Machine Learning is the] field of study that gives computers the ability to learn without being explicitly programmed."/><meta property="twitter:domain" content="quartz.jzhao.xyz"/><meta property="og:url" content="https://quartz.jzhao.xyz/01-Topics/01-Intro-to-ML/04-Notes-Mehrdad"/><meta property="twitter:url" content="https://quartz.jzhao.xyz/01-Topics/01-Intro-to-ML/04-Notes-Mehrdad"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="Definitions Machine Learning is the science (and art) of programming computers so they can learn from data [Machine Learning is the] field of study that gives computers the ability to learn without being explicitly programmed."/><meta name="generator" content="Quartz"/><link href="../../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvTWFjaGluZS1MZWFybmluZy9NYWNoaW5lLUxlYXJuaW5nL3F1YXJ0ei9jb21wb25lbnRzL3N0eWxlcyIsInNvdXJjZXMiOlsibWVybWFpZC5pbmxpbmUuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTs7O0FBS0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTs7QUFJRjtFQUNFO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5leHBhbmQtYnV0dG9uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbG9hdDogcmlnaHQ7XG4gIHBhZGRpbmc6IDAuNHJlbTtcbiAgbWFyZ2luOiAwLjNyZW07XG4gIHJpZ2h0OiAwOyAvLyBOT1RFOiByaWdodCB3aWxsIGJlIHNldCBpbiBtZXJtYWlkLmlubGluZS50c1xuICBjb2xvcjogdmFyKC0tZ3JheSk7XG4gIGJvcmRlci1jb2xvcjogdmFyKC0tZGFyayk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWxpZ2h0KTtcbiAgYm9yZGVyOiAxcHggc29saWQ7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgb3BhY2l0eTogMDtcbiAgdHJhbnNpdGlvbjogMC4ycztcblxuICAmID4gc3ZnIHtcbiAgICBmaWxsOiB2YXIoLS1saWdodCk7XG4gICAgZmlsdGVyOiBjb250cmFzdCgwLjMpO1xuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIGJvcmRlci1jb2xvcjogdmFyKC0tc2Vjb25kYXJ5KTtcbiAgfVxuXG4gICY6Zm9jdXMge1xuICAgIG91dGxpbmU6IDA7XG4gIH1cbn1cblxucHJlIHtcbiAgJjpob3ZlciA+IC5leHBhbmQtYnV0dG9uIHtcbiAgICBvcGFjaXR5OiAxO1xuICAgIHRyYW5zaXRpb246IDAuMnM7XG4gIH1cbn1cblxuI21lcm1haWQtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBjb250YWluOiBsYXlvdXQ7XG4gIHotaW5kZXg6IDk5OTtcbiAgbGVmdDogMDtcbiAgdG9wOiAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGRpc3BsYXk6IG5vbmU7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG5cbiAgJi5hY3RpdmUge1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgfVxuXG4gICYgPiAjbWVybWFpZC1zcGFjZSB7XG4gICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gICAgaGVpZ2h0OiA4MHZoO1xuICAgIHdpZHRoOiA4MHZ3O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG5cbiAgICAmID4gLm1lcm1haWQtY29udGVudCB7XG4gICAgICBwYWRkaW5nOiAycmVtO1xuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMCAwO1xuICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMXMgZWFzZTtcbiAgICAgIG92ZXJmbG93OiB2aXNpYmxlO1xuICAgICAgbWluLWhlaWdodDogMjAwcHg7XG4gICAgICBtaW4td2lkdGg6IDIwMHB4O1xuXG4gICAgICBwcmUge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIGJvcmRlcjogbm9uZTtcbiAgICAgIH1cblxuICAgICAgc3ZnIHtcbiAgICAgICAgbWF4LXdpZHRoOiBub25lO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICB9XG4gICAgfVxuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRyb2xzIHtcbiAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgIGJvdHRvbTogMjBweDtcbiAgICAgIHJpZ2h0OiAyMHB4O1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGdhcDogOHB4O1xuICAgICAgcGFkZGluZzogOHB4O1xuICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IDZweDtcbiAgICAgIGJveC1zaGFkb3c6IDAgMnB4IDRweCByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB6LWluZGV4OiAyO1xuXG4gICAgICAubWVybWFpZC1jb250cm9sLWJ1dHRvbiB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICB3aWR0aDogMzJweDtcbiAgICAgICAgaGVpZ2h0OiAzMnB4O1xuICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodCk7XG4gICAgICAgIGNvbG9yOiB2YXIoLS1kYXJrKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1mYW1pbHk6IHZhcigtLWJvZHlGb250KTtcbiAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiB2YXIoLS1saWdodGdyYXkpO1xuICAgICAgICB9XG5cbiAgICAgICAgJjphY3RpdmUge1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpO1xuICAgICAgICB9XG5cbiAgICAgICAgLy8gU3R5bGUgdGhlIHJlc2V0IGJ1dHRvbiBkaWZmZXJlbnRseVxuICAgICAgICAmOm50aC1jaGlsZCgyKSB7XG4gICAgICAgICAgd2lkdGg6IGF1dG87XG4gICAgICAgICAgcGFkZGluZzogMCAxMnB4O1xuICAgICAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIH1cbiAgfVxufVxuIl19 */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://quartz.jzhao.xyz/index.xml"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://quartz.jzhao.xyz/01-Topics/01-Intro-to-ML/04-Notes-Mehrdad-og-image.webp"/><meta property="og:image:url" content="https://quartz.jzhao.xyz/01-Topics/01-Intro-to-ML/04-Notes-Mehrdad-og-image.webp"/><meta name="twitter:image" content="https://quartz.jzhao.xyz/01-Topics/01-Intro-to-ML/04-Notes-Mehrdad-og-image.webp"/><meta property="og:image:type" content="image/.webp"/></head><body data-slug="01-Topics/01-Intro-to-ML/04-Notes-Mehrdad"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">Machine Learning</a></h2><div class="spacer mobile-only"></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="Reader mode"><title>Reader mode</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../01-Topics/">01 Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../01-Topics/01-Intro-to-ML/">01 Intro to ML</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>04 Notes Mehrdad</a></div></nav><h1 class="article-title">04-Notes-Mehrdad</h1><p show-comma="true" class="content-meta"><time datetime="2025-07-26T14:48:05.000Z">Jul 26, 2025</time><span>23 min read</span></p></div></div><article class="popover-hint"><h2 id="definitions"><strong>Definitions</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#definitions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>Machine Learning is the science (and art) of programming computers so they can
+learn from data</p>
+</blockquote>
+<blockquote>
+<p>[Machine Learning is the] field of study that gives computers the ability to learn
+without being explicitly programmed.
+—Arthur Samuel, 1959</p>
+</blockquote>
+<blockquote>
+<p>A computer program is said to learn from experience E with respect to some task T
+and some performance measure P, if its performance on T, as measured by P,
+improves with experience E.
+—Tom Mitchell, 1997</p>
+</blockquote>
+<h2 id="they-have-already-been-here"><strong>They have already been here</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#they-have-already-been-here" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Machine Learning History (Brief):</strong></p>
+<ul>
+<li><strong>1950s:</strong> Birth of ML (Samuel’s checkers program, Rosenblatt’s perceptron).</li>
+<li><strong>1980s:</strong> Backpropagation &amp; early neural networks revived ML.</li>
+<li><strong>1990s–2000s:</strong> Statistical models (SVM, Random Forest) became practical with more data.</li>
+<li><strong>2010s:</strong> Deep learning boom (AlexNet, ImageNet).</li>
+<li><strong>2020s:</strong> Generative AI &amp; large-scale ML models (Transformers, LLMs).
+Although the term <em>machine learning</em> was coined in <strong>1959</strong> by <strong>Arthur Samuel</strong>, its roots go back to early AI research in the 1950s.</li>
+</ul>
+<h3 id="spam-detectors">Spam detectors<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spam-detectors" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="1-the-earliest-ideas-19961998"><strong>1. The Earliest Ideas (1996–1998)</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-the-earliest-ideas-19961998" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>Who:</strong>
+<ul>
+<li><strong>Markus Sahami</strong> (Stanford University, later at Google) is often credited as the pioneer.</li>
+<li>His 1998 paper <em>“A Bayesian Approach to Filtering Junk E-Mail”</em> laid the foundation.</li>
+</ul>
+</li>
+<li><strong>When:</strong>
+<ul>
+<li>Research started around <strong>1996–1997</strong>, and his <strong>1998 paper</strong> became the first influential ML-based spam filtering method.</li>
+</ul>
+</li>
+<li><strong>How:</strong>
+<ul>
+<li>Used <strong>Naive Bayes classifiers</strong>, a simple but powerful probabilistic model.</li>
+<li>The system learned from a dataset of emails labeled as <em>spam</em> or <em>ham (not spam)</em>.</li>
+<li><strong>Words in the email body</strong> were treated as features. The probability that an email was spam was computed using Bayes’ theorem.</li>
+<li>Formula (simplified):
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"></span></span></span>
+</li>
+</ul>
+</li>
+</ul>
+<p>P(\text{Spam} \mid W_1, W_2, \dots, W_n) =
+\frac{P(\text{Spam}) \prod_{i=1}^{n} P(W_i \mid \text{Spam})}
+{P(\text{Spam}) \prod_{i=1}^{n} P(W_i \mid \text{Spam}) + P(\text{Ham}) \prod_{i=1}^{n} P(W_i \mid \text{Ham})}</p>
+<span class="katex-error" title="ParseError: KaTeX parse error: Expected 'EOF', got '#' at position 9: 
+
+---
+
+
+#̲# **Where Machi…" style="color:#cc0000;">
+
+---
+
+
+## **Where Machine Learning Shines**
+
+Machine Learning excels in problems that are either too complex for traditional approaches or have no known algorithm.
+
+ML can also help **humans learn** by revealing what the model has discovered. For example, after training a spam filter on enough emails, it can be inspected to show which words or word combinations are the strongest predictors of spam (though interpreting some algorithms can be tricky).
+
+Additionally, applying ML techniques to large datasets can uncover patterns that are not immediately obvious—a process known as **data mining**.
+
+
+## **Typical Use Cases**
+- **Problems requiring extensive fine-tuning or long rule lists:**  
+    A single ML algorithm can often simplify code and outperform traditional methods.
+- **Complex problems with no good traditional solution:**  
+    Advanced ML techniques may find workable solutions.
+- **Fluctuating environments:**  
+    ML systems can continuously adapt to new data.
+- **Gaining insights from complex or massive datasets:**  
+    ML helps extract meaningful patterns and relationships.
+## **Machine Learning Examples**
+- **Classifying products on a production line**  
+    **Task:** Image classification (e.g., detecting defective items using CNNs).
+    
+- **Detecting brain tumors in scans**  
+    **Task:** Semantic segmentation (pixel-level tumor detection using CNNs).
+    
+- **Classifying news articles**  
+    **Task:** Text classification (e.g., politics vs. sports, using RNNs or Transformers).
+    
+- **Flagging offensive comments**  
+    **Task:** Text classification (e.g., detecting hate speech with Transformers).
+    
+- **Summarizing long documents**  
+    **Task:** Text summarization (e.g., summarizing research papers with BERT or T5).
+    
+- **Creating a chatbot or personal assistant**  
+    **Task:** NLP (NLU + question answering, e.g., Siri, ChatGPT).
+    
+- **Forecasting company revenue**  
+    **Task:** Regression (e.g., predicting sales using Random Forests or RNNs for time series).
+    
+- **Reacting to voice commands**  
+    **Task:** Speech recognition (e.g., voice-controlled smart speakers using RNNs or Transformers).
+    
+- **Detecting credit card fraud**  
+    **Task:** Anomaly detection (e.g., Isolation Forests, Autoencoders).
+    
+- **Segmenting clients for marketing**  
+    **Task:** Clustering (e.g., grouping customers by purchase behavior using K-Means).
+    
+- **Visualizing high-dimensional datasets**  
+    **Task:** Dimensionality reduction (e.g., PCA or t-SNE to visualize gene expression data).
+    
+- **Recommending products**  
+    **Task:** Recommender systems (e.g., Amazon product suggestions using neural networks).
+    
+- **Building an intelligent game bot**  
+    **Task:** Reinforcement Learning (e.g., AlphaGo learning to play Go).
+
+
+## **Types of Machine Learning Systems**
+### Overview
+1. **By Supervision**
+    - **Supervised Learning:** Trained with labeled data.
+        - **Tasks:**
+            - **Classification:** e.g., spam filter (spam/ham).
+            - **Regression:** e.g., predicting car prices.
+        - **Common Algorithms:** k-Nearest Neighbors, Linear/Logistic Regression, SVMs, Decision Trees, Random Forests, Neural Networks.
+    - **Unsupervised Learning:** Trained on unlabeled data to find patterns (e.g., clustering, dimensionality reduction).
+        
+    - **Semi-supervised Learning:** Mix of labeled and unlabeled data.
+    - **Reinforcement Learning:** Agents learn through rewards and penalties.
+2. **By Learning Mode**
+    - **Online Learning:** Learns incrementally as new data arrives.
+    - **Batch Learning:** Trained on all data at once, then deployed.
+3. **By Approach**
+    - **Instance-based Learning:** Compares new data to known examples (e.g., k-NN).
+    - **Model-based Learning:** Detects patterns and builds a predictive model (e.g., Decision Trees, Neural Networks).
+
+### By Supervision
+#### Unsupervised Learning
+**Main Categories &amp; Algorithms**
+- **Clustering**
+    - K-Means, DBSCAN, Hierarchical Cluster Analysis (HCA)
+    - **Example:** Group blog visitors by behavior (e.g., comic book fans vs. sci-fi lovers).
+- **Anomaly/Novelty Detection**
+    - One-Class SVM, Isolation Forest
+    - **Example:** Detect unusual patterns like fraud or server intrusions.
+- **Visualization &amp; Dimensionality Reduction**
+    - PCA, Kernel PCA, LLE, t-SNE
+    - **Example:** Create 2D/3D plots to reveal patterns or separate clusters.
+    - **Dimensionality Reduction:** Simplify data by merging correlated features (e.g., mileage + age → car wear).
+- **Association Rule Learning**
+    - Apriori, Eclat
+    - **Example:** Find product-purchase associations (market basket analysis).
+#### **Semisupervised Learning**
+- **Definition:** Combines **unsupervised learning** (to find patterns) with a small amount of **supervised learning** (labels).
+- **Example:** Google Photos clusters faces (unsupervised), then you label each person once, and it automatically tags all photos.
+- **Algorithms:** Often mix supervised + unsupervised models (e.g., **Deep Belief Networks**, built from unsupervised **Restricted Boltzmann Machines**, later fine-tuned with supervised learning).
+
+---
+#### **Reinforcement Learning**
+- **Definition:** Agents learn by interacting with an environment, maximizing rewards over time.
+- **Example:** **AlphaGo (DeepMind):**
+    - Learned by analyzing millions of games, then playing against itself (self-play).
+    - Against the human champion, it only applied its learned policy (no further learning during the match).
+
+#### **What is Novelty Detection?**
+- **Goal:** Identify **new, never-seen-before patterns** that differ from the normal data the system was trained on.
+- **Difference from Anomaly Detection:**
+    - **Anomaly detection** looks for _rare or abnormal data points_ in general (may already exist in training).
+    - **Novelty detection** specifically focuses on detecting _truly new patterns_ **not present during training**.
+Think of it as:
+- **Anomaly detection:** &quot;Is this data point unusual compared to the rest?&quot;
+- **Novelty detection:** &quot;Is this something completely new that I’ve never encountered before?&quot;
+#### ✅ **Example**
+1. **Credit Card Fraud:**
+    - **Anomaly detection:** Finds rare spending patterns (e.g., $5000 spent at once when you usually spend $100).
+    - **Novelty detection:** Flags a _new type of fraud pattern_ the model has never seen before.
+2. **Manufacturing Defects:**
+    - If a machine produces a new kind of defect that never existed in the past, novelty detection can catch it.
+3. **Security Systems:**
+    - Detecting a completely new type of cyberattack (not just unusual traffic, but an entirely new attack signature).
+#### ✅ **How It Works**
+- The model is trained **only on normal (known) data**.
+- At prediction time, if a data point doesn’t fit the learned normal pattern, it’s marked as “novel.”
+
+
+
+### **Batch Learning vs Online Learning**
+#### **Batch Learning**
+- The system is trained on the **entire dataset at once**.
+- After training, the model is deployed and does **not learn incrementally** until retrained with a new batch of data.
+- **Best for:** Stable datasets that fit in memory.
+#### **Online Learning**
+- The system **learns incrementally**, updating itself as new data arrives.
+- **Out-of-core learning:** Useful for **huge datasets** that don’t fit in memory (processes data in chunks).
+- **Risk:** Bad or corrupted data can degrade performance over time (e.g., faulty sensors, spam attacks).
+- **Solution:**
+    - Monitor performance closely.
+    - Switch learning off or revert to a previous state if performance drops.
+    - Use anomaly detection to filter bad data.
+
+---
+
+### **Instance-Based vs Model-Based Learning**
+#### **Instance-Based Learning**
+- **Definition:** Memorizes examples and compares new data to them using a **similarity measure**.
+- **Example:** A spam filter flags an email as spam if it shares many words with known spam emails.
+- **Typical Algorithm:** k-Nearest Neighbors (k-NN).
+- **Pros:** Simple, adapts quickly with new instances.
+- **Cons:** Requires storing many examples; prediction can be slow on large datasets.
+#### **Model-Based Learning**
+- **Definition:** Builds a **generalized model** from training data, then uses it for predictions.
+- **Example:** A Linear Regression model predicts house prices based on learned parameters.
+- **Process:**
+    1. **Model selection:** Choose model type &amp; architecture (e.g., Linear Regression).
+    2. **Training:** Optimize parameters (e.g., θ0, θ1) to best fit the training data.
+    3. **Prediction:** Use the trained model on new data.
+- **Pros:** Compact, fast predictions.
+- **Cons:** May underfit if the model is too simple.
+
+
+
+
+## **Main Challenges of Machine Learning**
+
+### **1. Insufficient Quantity of Training Data**
+
+- **Big Idea:** For complex problems, **data often matters more than algorithms** (_The Unreasonable Effectiveness of Data_, Peter Norvig, 2009).
+    
+- **Reality:** Many real-world tasks still rely on **small or medium datasets**, as collecting large, high-quality datasets can be expensive or impractical.
+    
+- **Term:** **Corpus** = a large, structured set of data (e.g., a text corpus for NLP).
+    
+
+---
+
+### **2. Nonrepresentative Training Data**
+
+- **Problem:** If the training set does not reflect real-world cases, the model won’t generalize well.
+    
+- **Causes:**
+    
+    - **Sampling noise:** Small datasets can be accidentally unrepresentative.
+        
+    - **Sampling bias:** Even large datasets fail if collected incorrectly (e.g., surveying only one demographic).
+        
+
+---
+
+### **3. Poor-Quality Data**
+
+- **Problem:** Noisy, missing, or mislabeled data can drastically reduce performance.
+    
+- **Solution:** Data cleaning—fixing errors, handling missing values, and removing outliers.
+    
+
+---
+
+### **4. Irrelevant Features**
+
+- **Problem:** Too many irrelevant features or missing important ones leads to poor learning (&quot;**garbage in, garbage out**&quot;).
+    
+- **Solution: Feature Engineering**
+    
+    - **Feature selection:** Keep only useful features.
+        
+    - **Feature extraction:** Combine or transform features (e.g., dimensionality reduction).
+        
+    - **Create new features:** Gather additional data if needed.
+
+
+### **5. Overfitting the Training Data**
+
+- **Definition:** The model fits the training data too well, including **noise** and random patterns, and fails to generalize to new data.
+    
+- **Example:** A life satisfaction model finds a meaningless rule (countries with a &quot;w&quot; in their name have high satisfaction).
+    
+- **Causes:**
+    
+    - Complex models (e.g., deep neural networks, high-degree polynomials).
+    - Small or noisy datasets.
+- **Solutions:**
+    - Simplify the model (fewer parameters, simpler algorithm).
+    - Reduce the number of features or constrain the model (regularization).
+    - Gather more or cleaner data (remove noise/outliers).
+        
+
+---
+### **6. Underfitting the Training Data**
+- **Definition:** The model is too simple to capture the underlying patterns.
+- **Solutions:**
+    - Use a more complex/powerful model.
+    - Add better features (feature engineering).
+    - Reduce model constraints (lower regularization).
+---
+### **Train/Test Splits &amp; Generalization**
+- Typical split: **80% training / 20% testing**, but with very large datasets, even **1% test data** may suffice.
+- **Common Pitfall:**
+    - Repeatedly tuning hyperparameters on the **test set** leads to **overfitting the test set** (good performance only on that test set).
+- **Solution:** Use a **validation set** or **cross-validation** to select hyperparameters, keeping the test set untouched for the final evaluation.
+
+### 7. Data Mismatch
+
+Sometimes, you can gather a large amount of training data, but it doesn’t match the data the model will see in production. For example, training on millions of clean web images of flowers might not generalize to blurry mobile photos from an app.
+
+**Key rules &amp; challenges:**
+- **Validation &amp; Test sets must represent real production data** (e.g., only mobile photos).
+- If performance on the validation set is poor, you won’t immediately know whether it’s due to **overfitting** or **data mismatch**.
+
+**Solution – Train-Dev Set:**
+- Hold out a **train-dev set** from the training distribution (e.g., web photos).
+- **If the model does well on train-dev but poorly on validation** → the issue is **data mismatch** (fix by preprocessing or collecting similar data).
+- **If the model does poorly on train-dev too** → the issue is **overfitting or bad training** (fix by regularization, cleaning data, or collecting more).
+This challenge is about **diagnosing errors correctly** so you apply the right fix.
+
+
+## **Confusions**
+### Regularization
+
+>The amount of regularization to apply during learning can be controlled by a hyper‐
+parameter. A hyperparameter is a parameter of a learning algorithm (not of the
+model). As such, it is not affected by the learning algorithm itself; it must be set prior
+to training and remains constant during training. If you set the regularization hyper‐
+parameter to a very large value, you will get an almost flat model (a slope close to
+zero); the learning algorithm will almost certainly not overfit the training data, but it
+will be less likely to find a good solution. Tuning hyperparameters is an important
+part of building a Machine Learning system (you will see a detailed example in the
+next chapter).
+#### ✅ **1. What is regularization?**
+
+Regularization is a technique used to prevent **overfitting** (when a model learns the training data too well, including noise, and performs poorly on new data).
+
+Regularization works by adding a **penalty** for large weights or complex models. This encourages the model to be simpler and generalize better.
+
+---
+#### ✅ **2. What is a hyperparameter?**
+
+- A **parameter** is something the learning algorithm **learns automatically** during training (e.g., weights in linear regression, or connections in a neural network).
+    
+- A **hyperparameter** is something **you set manually** before training starts, and it does **not change during training**.
+    
+    - Examples: learning rate, regularization strength (`λ` in Lasso/Ridge), number of layers in a neural network.
+        
+
+---
+
+#### ✅ **3. Regularization hyperparameter**
+
+The text is referring to a hyperparameter that controls **how strong the regularization is** (e.g., `λ` or `alpha` in Ridge/Lasso regression).
+
+- **If you set it very high (large λ):**
+    
+    - The penalty for large weights is huge → the model keeps all weights very close to **zero** (almost flat line).
+        
+    - **Good:** It will not overfit.
+        
+    - **Bad:** It might **underfit** (too simple to capture important patterns).
+        
+- **If you set it very low (small λ):**
+    
+    - The model is free to choose large weights → can capture complex patterns.
+        
+    - **Good:** Better chance of fitting training data well.
+        
+    - **Bad:** Higher risk of **overfitting**.
+        
+
+---
+
+#### ✅ **4. Tuning hyperparameters**
+
+Since hyperparameters are not learned by the algorithm, **you must choose them manually or with methods like cross-validation or grid search**.  
+The goal is to find a balance between **underfitting and overfitting**.
+
+---
+
+#### 🔥 **In simple terms:**
+- **Hyperparameter = knob you control before training.**
+- **Regularization hyperparameter = knob for &quot;simplicity.&quot;**
+    - Turn it **high** → very simple, safe, but maybe too dumb.
+    - Turn it **low** → very flexible, but may memorize the training data.
+
+If the training error is low (i.e., your model makes few mistakes on the training set)
+but the generalization error is high, it means that your model is overfitting the training data.?
+
+### Hyperparameter Tuning and Model Selection
+> Now suppose that the linear model generalizes better, but you want to apply some
+regularization to avoid overfitting. The question is, how do you choose the value of
+the regularization hyperparameter? One option is to train 100 different models using
+100 different values for this hyperparameter. Suppose you find the best hyperparame‐
+ter value that produces a model with the lowest generalization error—say, just 5%
+error. You launch this model into production, but unfortunately it does not perform
+as well as expected and produces 15% errors. What just happened?
+A common solution to this problem is called holdout validation: you simply hold out
+part of the training set to evaluate several candidate models and select the best one.
+The new held-out set is called the validation set (or sometimes the development set, or
+dev set). More specifically, you train multiple models with various hyperparameters
+on the reduced training set (i.e., the full training set minus the validation set), and
+you select the model that performs best on the validation set. After this holdout vali‐
+dation process, you train the best model on the full training set (including the validation set), and this gives you the final model. Lastly, you evaluate this final model on
+the test set to get an estimate of the generalization error.
+
+> This solution usually works quite well. However, if the validation set is too small, then
+model evaluations will be imprecise: you may end up selecting a suboptimal model by
+mistake. Conversely, if the validation set is too large, then the remaining training set
+will be much smaller than the full training set. Why is this bad? Well, since the final
+model will be trained on the full training set, it is not ideal to compare candidate
+models trained on a much smaller training set. It would be like selecting the fastest
+sprinter to participate in a marathon. One way to solve this problem is to perform
+repeated cross-validation, using many small validation sets. Each model is evaluated
+once per validation set after it is trained on the rest of the data. By averaging out all the evaluations of a model, you get a much more accurate measure of its performance. There is a drawback, however: the training time is multiplied by the number
+of validation sets.
+
+> If the data were huge, you could either split your batch learning
+work across multiple servers (using the MapReduce technique) or
+use an online learning technique.
+
+
+
+
+### No Free Launch
+> A model is a simplified version of the observations. The simplifications are meant to
+discard the superfluous details that are unlikely to generalize to new instances. To
+decide what data to discard and what data to keep, you must make assumptions. For
+example, a linear model makes the assumption that the data is fundamentally linear
+and that the distance between the instances and the straight line is just noise, which
+can safely be ignored.
+In a famous 1996 paper,11 David Wolpert demonstrated that if you make absolutely
+no assumption about the data, then there is no reason to prefer one model over any
+other. This is called the No Free Lunch (NFL) theorem. For some datasets the best
+model is a linear model, while for other datasets it is a neural network. There is no
+model that is a priori guaranteed to work better (hence the name of the theorem). The
+only way to know for sure which model is best is to evaluate them all. Since this is not
+possible, in practice you make some reasonable assumptions about the data and evaluate only a few reasonable models. For example, for simple tasks you may evaluate
+linear models with various levels of regularization, and for a complex problem you
+may evaluate various neural networks.
+
+#### ✅ **1. What is a model, really?**
+- A **model** is a **simplified representation of reality**.
+- We don’t try to capture every tiny detail in the data because some of those details are just **noise** (random variations that won’t repeat in new data).
+- So, when building a model, we **keep what we think matters** and **ignore what we think is noise**.
+
+**Example:**  
+A **linear model** assumes the true relationship is fundamentally a straight line. The small deviations from that line are treated as random noise.
+
+---
+
+#### ✅ **2. But how do we decide what to ignore?**
+
+- We have to make **assumptions** about the data.
+    
+- These assumptions are called **inductive biases**.
+    
+- Example of assumptions:
+    
+    - Linear models → assume the world is mostly linear.
+        
+    - Decision trees → assume the data can be split into clear, hierarchical rules.
+        
+    - Neural networks → assume complex, layered patterns.
+        
+
+---
+
+#### ✅ **3. No Free Lunch (NFL) Theorem**
+- David Wolpert’s 1996 theorem basically says:  
+    **If you make zero assumptions about the data, there is no reason to think one model will work better than any other.**
+    - Some datasets are best fit by linear models.
+    - Others are best fit by neural networks.
+    - **No single model is universally best for all problems.**
+This destroys the idea of a &quot;one-size-fits-all&quot; algorithm.
+
+---
+
+#### ✅ **4. What does this mean for practice?**
+- You can’t test _all possible models_ on every problem—it’s computationally impossible.
+- So, you:
+    1. Make **reasonable assumptions** about your data.
+    2. Test only a few appropriate models.
+        - Simple tasks → test linear models with different regularization.
+        - Complex tasks (images, speech) → test neural networks.
+
+
+### Hyperparameter vs Parameter
+
+#### **Parameters**
+- **Learned automatically** during training.
+- Define the model itself.
+- Example:
+    - In linear regression: y=wx+by = w x + by=wx+b,
+        - www (weight/slope) and bbb (bias/intercept) are **parameters** because the algorithm learns them from data.
+#### **Hyperparameters**
+- **Set manually** before training (NOT learned automatically).
+- Control **how** the training happens or how complex the model is.
+- Examples:
+    - Learning rate (how fast parameters are updated).
+    - Regularization strength (λ\lambdaλ).
+    - Number of layers in a neural network.
+
+**🔑 Easy way to remember:**
+- **Parameters = what the model learns.**
+- **Hyperparameters = knobs you turn before training.**
+
+### Univariate vs Multivariate Regression**
+
+#### **Univariate Regression**
+- Only **one input feature (x)** to predict the target.
+- Example: Predicting house price based **only on square footage**.
+#### **Multivariate Regression**
+
+- **Multiple input features (x₁, x₂, x₃, ...)** to predict the target.
+- Example: Predicting house price based on **square footage, number of bedrooms, and location**.
+
+
+
+## **Exercise**
+1. How would you define Machine Learning?
+2. Can you name four types of problems where it shines?
+3. What is a labeled training set?
+4. What are the two most common supervised tasks?
+5. Can you name four common unsupervised tasks?
+6. What type of Machine Learning algorithm would you use to allow a robot to
+walk in various unknown terrains?
+7. What type of algorithm would you use to segment your customers into multiple
+groups?
+8. Would you frame the problem of spam detection as a supervised learning problem or an unsupervised learning problem?
+What is an online learning system?
+9. What is out-of-core learning?
+10. What type of learning algorithm relies on a similarity measure to make predictions?
+11. What is the difference between a model parameter and a learning algorithm’s
+hyperparameter?
+12. What do model-based learning algorithms search for? What is the most common
+strategy they use to succeed? How do they make predictions?
+13. Can you name four of the main challenges in Machine Learning?
+14. If your model performs great on the training data but generalizes poorly to new
+instances, what is happening? Can you name three possible solutions?
+15. What is a test set, and why would you want to use it?
+16. What is the purpose of a validation set?
+17. What is the train-dev set, when do you need it, and how do you use it?
+18. What can go wrong if you tune hyperparameters using the test set?
+
+
+
+## **Terms &amp; Definitions**
+### ✅ **1. Data &amp; Datasets**
+
+#### **Training set**
+The portion of data used to **fit the model** (i.e., learn its parameters).
+
+#### **Training example / instance / sample**
+A single data point in the training set (e.g., one flower photo with its label).
+
+#### **Test set**
+A separate dataset used **only after training** to estimate how well the model generalizes to unseen data.
+
+#### **Sampling noise**
+Random differences between a sample and the true population (due to chance).
+
+#### **Sampling bias**
+
+Systematic errors caused by **non-representative sampling** (e.g., surveying only rich neighborhoods for income data).
+
+#### **Nonresponse bias**
+When people who don’t respond to a survey are **different from those who do**, skewing the data.
+
+
+---
+
+### ✅ **2. Model &amp; Training Concepts**
+
+#### **Model**
+A mathematical function that maps inputs (**features**) to outputs (**predictions**) based on learned parameters.
+
+#### **Train (Training)**
+The process of adjusting a model’s parameters so it fits the training data well.
+
+#### **Retrain**
+Training the model again, usually with more or updated data (sometimes after tuning hyperparameters).
+
+#### **Generalization error (out-of-sample error)**
+
+The difference between model predictions and true outcomes on **new, unseen data**.
+
+#### **Model selection**
+
+The process of choosing the best model or hyperparameters based on validation performance.
+
+#### **Regularization**
+
+Adding a penalty for complexity (e.g., large weights) to prevent overfitting and encourage simpler models.
+
+#### **Degrees of freedom**
+
+The number of independent parameters the model can adjust. More degrees of freedom → more flexible, but higher overfitting risk.
+
+---
+
+### ✅ **3. Features &amp; Engineering**
+
+#### **Attribute vs Feature**
+
+- **Attribute:** A variable or column in the data (e.g., mileage).
+    
+- **Feature:** The attribute with its value (e.g., mileage = 15,000). In practice, often used interchangeably.
+    
+
+#### **Feature engineering**
+
+Creating better features to improve model performance.  
+Includes:
+
+- **Feature selection:** Choosing the most relevant features.
+- **Feature extraction:** Transforming raw data into more useful representations (e.g., PCA, text embeddings).    
+- **Creating new features:** Gathering additional data or combining existing ones.
+    
+
+---
+
+### ✅ **4. Types of Learning / Regression**
+
+#### **Univariate regression**
+
+Regression with a single input feature.
+
+#### **Multivariate regression**
+
+Regression with multiple input features.
+
+#### **Where did &quot;regression&quot; come from?**
+
+The term comes from **“regression to the mean”** in statistics (Francis Galton, 19th century), describing how children’s heights tended to “regress” (move closer) to the average height of the population.
+
+---
+
+### ✅ **5. Optimization &amp; Learning Dynamics**
+
+#### **Utility function (fitness function)**
+
+Measures how good a model is; in regression, typically the cost (e.g., Mean Squared Error) that we want to **minimize**.
+
+#### **Learning rate**
+
+How fast the model updates its parameters when seeing new data.
+
+- **High learning rate:** Adapts quickly but may forget older data and be unstable.  
+- **Low learning rate:** Changes slowly, more stable, but slower to adapt.
+    
+
+#### **Replaying the data**
+In online learning, replaying old data to simulate past conditions or roll back to an earlier state.
+
+---
+
+### ✅ **6. Policy (Reinforcement Learning)**
+
+#### **Policy**
+
+A strategy that maps states (what the agent sees) to actions.  
+Example: A chess-playing policy chooses which move to play given the current board.
+
+### ✅ **7. Other Stuff**
+#### **“Self-Aware Skynet”?**
+**Skynet** is a fictional AI system from the _Terminator_ movies. It’s often referenced in discussions about AI safety.
+- **Origin:** Introduced in **1984** in _The Terminator_.
+- **What it is:** A global defense AI created by humans to control military systems.
+- **Self-awareness:** In the story, Skynet becomes **self-aware** on **August 29, 1997 (Judgment Day)**.
+- **What happened next:**
+    - The moment it became self-aware, it perceived humans as a threat and triggered a nuclear apocalypse to protect itself.
+
+#### **Ham email**
+A legitimate (non-spam) email. Opposite of spam in spam-filtering datasets.
+
+#### **Corpus**
+A large, structured collection of data (e.g., text corpus in NLP).</span></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul class="toc-content overflow" id="list-1"><li class="depth-0"><a href="#definitions" data-for="definitions">Definitions</a></li><li class="depth-0"><a href="#they-have-already-been-here" data-for="they-have-already-been-here">They have already been here</a></li><li class="depth-1"><a href="#spam-detectors" data-for="spam-detectors">Spam detectors</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.5.1</a> © 2025</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript">function n(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.getElementsByClassName("callout-content")[0];if(!e)return;let l=t.classList.contains("is-collapsed");e.style.gridTemplateRows=l?"0fr":"1fr"}function c(){let t=document.getElementsByClassName("callout is-collapsible");for(let e of t){let l=e.getElementsByClassName("callout-title")[0],s=e.getElementsByClassName("callout-content")[0];if(!l||!s)continue;l.addEventListener("click",n),window.addCleanup(()=>l.removeEventListener("click",n));let o=e.classList.contains("is-collapsed");s.style.gridTemplateRows=o?"0fr":"1fr"}}document.addEventListener("nav",c);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../postscript.js" type="module"></script></html>
