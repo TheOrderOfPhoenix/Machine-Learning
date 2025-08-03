@@ -164,9 +164,6 @@ $$
 | **Variance**    | How much estimate varies                          | $$\text{Var}(\hat{\theta}) = \mathbb{E}[(\hat{\theta} - \mathbb{E}[\hat{\theta}])^2]$$ |
 | **MSE**         | Total expected squared error                      | $$\text{MSE} = \text{Bias}^2 + \text{Variance}$$                                       |
 | **Consistency** | Estimate gets closer to truth as \(n \to \infty\) | $$\hat{\theta}_n \xrightarrow{p} \theta$$                                              |
-
-
-
 ## **Estimating Variance**
 
 ### ✅ **1. Naive (Maximum Likelihood) Estimator**
@@ -232,13 +229,12 @@ For a video explanation: [StatQuest](https://youtu.be/XepXtl9YKwc)
 
 Maximum Likelihood Estimation is a method to find the parameter values (\( \theta \)) of a statistical model that **make the observed data most probable**.
 
-👉 **Pick the parameter values that maximize the probability (likelihood) of seeing the data you observed.**
+**Pick the parameter values that maximize the probability (likelihood) of seeing the data you observed.**
 
 ---
-
 ### ✅ **2. Formal Definition**
 
-Given data \( X_1, X_2, ..., X_n \) assumed to come from a distribution with parameter \( \theta \):
+Given data ($X_1, X_2, ..., X_n$) assumed to come from a distribution with parameter ($\theta$):
 
 **Likelihood function:**
 
@@ -272,7 +268,7 @@ $$
 
 ---
 
-### ✅ **3. Intuition**
+### **3. Intuition**
 
 - The "best" parameters should make your observed data as likely as possible under the assumed distribution.  
 
@@ -283,10 +279,9 @@ $$
 ### ✅ **4. Properties of MLE**
 
 - **Consistency:**  
-  \( \hat{\theta}_{\text{MLE}} \to \theta \) as \( n \to \infty \).
+  ($\hat{\theta}_{\text{MLE}} \to \theta)$ as $(n \to \infty)$ .
 
 - **Asymptotic normality:**  
-
   $$
   \hat{\theta}_{\text{MLE}} \sim \mathcal{N}\left(\theta, \frac{1}{n I(\theta)}\right)
   $$
@@ -341,4 +336,378 @@ $$
 
 (intuitive: proportion of heads)
 
+
+
+
+# New Ones
+
+## 🔍 Maximum Likelihood Estimation (MLE) in Machine Learning
+
+### What is MLE?
+
+- MLE estimates model parameters $\theta$ that maximize the probability of observed data.
+- Given data $X = \{x^{(1)}, x^{(2)}, ..., x^{(m)}\}$, the **likelihood function** is:
+
+  $$
+  h(\theta) = P(X \mid \theta)
+  $$
+
+- Instead of maximizing $h(\theta)$ directly, we usually maximize the **log-likelihood** for convenience:
+
+  $$
+  \ln h(\theta) = \sum_{i=1}^m \ln P(x^{(i)} \mid \theta)
+  $$
+
+---
+
+### Key Properties of MLE
+
+1. As the number of samples $n \to \infty$, the MLE $\hat{\theta}$ is **unbiased**:  
+   $\hat{\theta} \to \theta$ on average.
+
+2. **Consistency:**  
+   $\hat{\theta}$ converges in probability to the true $\theta$ as $n \to \infty$.
+
+3. **Asymptotic Normality:**  
+   The normalized error is approximately normal:  
+   $$
+   \frac{\hat{\theta} - \theta}{\text{standard error}} \sim \mathcal{N}(0, 1)
+   $$
+
+---
+
+### Why MLE Matters in ML
+
+- Many models (e.g., logistic regression) use MLE to fit parameters.
+- Understanding MLE helps explain how models learn from data.
+
+---
+
+📌 **Tip:** Maximizing the log-likelihood is equivalent to minimizing a related loss function.
+
+
+
+
+## Hypothesis Testing
+
+- **$H_0$ (Null Hypothesis):** The default assumption; typically states there is **no effect** or **no difference**.
+- **$H_1$ (Alternative Hypothesis):** What you want to test for; usually states there **is an effect** or **difference**.
+
+---
+
+## Z-Test
+- [Hypothesis Testing Problems - Z Test & T Statistics - One & Two Tailed Tests 2](https://www.youtube.com/watch?v=zJ8e_wAWUzE&ab_channel=TheOrganicChemistryTutor)
+- [t-test vs z-test](https://www.youtube.com/watch?v=u0EdFFp_U0c&ab_channel=DataMListic)
+- Used to determine if there is a significant difference between sample and population means (or between two samples) when the population variance is known.
+- Test statistic formula:
+
+  $$
+  z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}
+  $$
+
+  where:  
+  $\bar{x}$ = sample mean,  
+  $\mu_0$ = population mean under $H_0$,  
+  $\sigma$ = population standard deviation,  
+  $n$ = sample size.
+
+- The $z$ value is compared to critical values from the standard normal distribution to accept or reject $H_0$.
+
+---
+
+## Sensitivity (True Positive Rate)
+
+- Measures the ability of a test or classifier to correctly identify **positive cases**.
+  
+  $$
+  \text{Sensitivity} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
+  $$
+
+- High sensitivity means **few false negatives** (good at detecting positives).
+
+---
+
+## Fisher’s Exact Test
+
+- A statistical significance test used for **small sample sizes** and **categorical data**.
+- Tests for **nonrandom association** between two categorical variables in a contingency table (often 2x2).
+- Calculates the exact probability of observing the data assuming $H_0$ is true.
+- Useful when sample sizes are too small for chi-square tests to be valid.
+
+---
+
+📌 **Summary:**  
+Hypothesis testing allows making decisions based on data. Z-tests handle mean comparisons with known variance. Sensitivity assesses detection ability, and Fisher’s Exact Test analyzes categorical associations, especially with small data.
+
+
+## Statistical Testing Concepts
+
+---
+### p-value
+- The **p-value** is the probability of observing data as extreme (or more) as the current sample, **assuming the null hypothesis ($H_0$) is true**.
+- It quantifies the evidence **against $H_0$**.
+- **Small p-values** mean strong evidence to **reject $H_0$**.
+---
+### p-value Cut-offs (Significance Levels)
+
+- Common thresholds for rejecting $H_0$:
+  - **0.05 (5%)**: Typical cutoff; reject $H_0$ if $p < 0.05$
+  - **0.01 (1%)**: Stricter cutoff; reject $H_0$ if $p < 0.01$
+- These cutoffs are called **significance levels ($\alpha$)**.
+
+---
+
+### $\chi^2$ (Chi-Squared) Test
+- [Chi-Squared by CrashCourse](https://www.youtube.com/watch?v=7_cs1YlZoug&ab_channel=CrashCourse)
+- Tests whether there is a **significant association** between categorical variables.
+- Compares **observed counts** with **expected counts** under $H_0$.
+- Test statistic:
+
+  $$
+  \chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}
+  $$
+
+  where $O_i$ = observed frequency, $E_i$ = expected frequency.
+
+- The statistic follows a **chi-squared distribution** with:
+
+  $$
+  \text{degrees of freedom} = (\text{number of rows} - 1) \times (\text{number of columns} - 1)
+  $$
+
+---
+
+### t-test
+- [Student's T Distribution - Confidence Intervals & Margin of Error](https://www.youtube.com/watch?v=MUD390jtgQs&ab_channel=TheOrganicChemistryTutor)
+- [Hypothesis Testing Problems - Z Test & T Statistics - One & Two Tailed Tests 2](https://www.youtube.com/watch?v=zJ8e_wAWUzE&ab_channel=TheOrganicChemistryTutor)
+[Student's t-test by Bozeman Science](https://www.youtube.com/watch?v=pTmLQvMM-1M&ab_channel=BozemanScience)
+- [t-test vs z-test](https://www.youtube.com/watch?v=u0EdFFp_U0c&ab_channel=DataMListic)
+- [Degree of Freedom](https://www.youtube.com/watch?v=Cm0vFoGVMB8&ab_channel=CrashCourse)
+
+- Tests whether the means of two groups are **significantly different** when the population variance is unknown.
+- Test statistic:
+  $$
+  t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
+  $$
+
+  where $\bar{x}$ = sample mean, $\mu_0$ = population mean under $H_0$, $s$ = sample standard deviation, $n$ = sample size.
+
+- The $t$ statistic follows a **Student's t-distribution** with $n-1$ degrees of freedom.
+- 
+
+---
+
+📌 **Summary:**
+
+- Use **p-values** and **significance levels** to decide whether to reject $H_0$.
+- $\chi^2$ test is for categorical data associations.
+- t-test compares means when variance is unknown.
+
+
+
+## 🚫 Non-Parametric Tests
+- [Parametric and Nonparametric Tests by DATAtab](https://www.youtube.com/watch?v=ftnOBcXtBEQ&ab_channel=DATAtab)
+- **Non-parametric tests** do not assume a specific distribution for the data.
+- Useful when data violates assumptions of parametric tests (e.g., normality).
+- Examples: Mann-Whitney U test, Wilcoxon signed-rank test, permutation tests.
+
+---
+
+## 🔄 Permutation Test
+
+- A **non-parametric** method to test hypotheses by **randomly shuffling labels** on data points.
+- Measures how likely an observed effect is under the null hypothesis by comparing it to a distribution of effects from shuffled data.
+- Useful for small samples or unknown distributions.
+
+---
+
+## 🔢 Multiple Hypothesis Testing
+
+- When testing **many hypotheses simultaneously**, the chance of **false positives (Type I errors)** increases.
+- Without correction, if you test 100 hypotheses at $\alpha=0.05$, about 5 may appear significant by chance.
+
+---
+
+## 🎯 Adjusting p-values: Bonferroni Correction
+
+- A simple and conservative method to control **family-wise error rate**.
+- Adjusted significance level:
+
+  $$
+  \alpha_{\text{adjusted}} = \frac{\alpha}{m}
+  $$
+
+  where $m$ = number of tests.
+
+- Reject $H_0$ only if:
+
+  $$
+  p < \alpha_{\text{adjusted}}
+  $$
+
+- Controls false positives but can be overly strict, increasing false negatives.
+
+---
+
+📌 **Summary:**
+
+- Use **permutation tests** when data distributions are unknown.
+- Be cautious with **multiple testing**; adjust p-values to avoid false positives.
+- **Bonferroni** is simple but conservative.
+
+
+## Linear Regression: Main Concepts
+
+
+### 0. Watch These
+- [The Main Ideas of Fitting a Line to Data (The Main Ideas of Least Squares and Linear Regression.)](https://www.youtube.com/watch?v=PaFPbb66DxQ&pp=ygUgc3RhdHF1ZXN0IGZpdHRpbmcgYSBsaW5lIHRvIGRhdGE%3D)
+- [Linear Regression, Clearly Explained!!!](https://www.youtube.com/watch?v=7ArmBVF2dCs&ab_channel=StatQuestwithJoshStarmer)
+	- Read the first comment by statquest for correction
+- [Gradient Descent, Step-by-Step](https://www.youtube.com/watch?v=sDv4f4s2SB8&ab_channel=StatQuestwithJoshStarmer)
+### 1. Least Squares Fit
+
+- Find the line (model) that **minimizes the sum of squared residuals**.
+- Residual: the vertical distance between a data point and the regression line.
+
+---
+
+### 2. Residuals and Sum of Squares
+
+- **Residuals:**  
+  $$
+  \text{residual}_i = y_i - \hat{y}_i
+  $$  
+  where $y_i$ is the actual value, $\hat{y}_i$ is the predicted value.
+
+- **Sum of Squares Total (SST):** variation around the mean (total variability in data)  
+  $$
+  SS_{\text{mean}} = \sum_{i=1}^n (y_i - \bar{y})^2
+  $$
+
+- **Sum of Squares Regression (SSR) / Fit:** variation explained by the model  
+  $$
+  SS_{\text{fit}} = \sum_{i=1}^n ( \hat{y}_i - \bar{y} )^2
+  $$
+
+- **Sum of Squares Residuals (SSE):** variation unexplained by the model  
+  $$
+  SS_{\text{res}} = \sum_{i=1}^n (y_i - \hat{y}_i)^2
+  $$
+
+---
+
+### 3. Coefficient of Determination ($R^2$)
+- [R-squared, Clearly Explained!!! by StatQuest](https://www.youtube.com/watch?v=bMccdk8EdGo&ab_channel=StatQuestwithJoshStarmer)
+- Measures how much of the **total variation** in the dependent variable is explained by the model:
+
+  $$
+  R^2 = \frac{SS_{\text{fit}}}{SS_{\text{mean}}} = 1 - \frac{SS_{\text{res}}}{SS_{\text{mean}}}
+  $$
+
+- Interpretation:  
+	  - $R^2 = 0$ means the model explains none of the variation.  
+  - $R^2 = 1$ means the model explains all the variation.
+
+---
+
+### 4. p-value for $R^2$
+
+- Tests whether the relationship captured by $R^2$ is statistically significant.
+- Small p-value indicates that the model explains a significant portion of the variance, not due to random chance.
+
+---
+
+### 5. Direction of Regression
+
+- Regression can be run both ways: predicting $y$ from $x$ or $x$ from $y$.
+- $R^2$ values may differ depending on the direction.
+
+---
+
+📌 **Summary:**  
+Linear regression fits a line minimizing residuals; $R^2$ quantifies explained variance; p-values test significance.
+
+## Questions About Linear Regression
+### 🧮 1. **Does Adding Parameters Always Help?**
+
+No, **not necessarily**.
+#### 📌 Key Idea:
+
+- Adding more predictors (features) to a linear regression **never decreases** the **training** R² (coefficient of determination).
+- But it **can worsen test performance** (generalization) due to **overfitting**.
+
+#### ✍️ Example:
+
+If you have a model
+
+$y = \beta_0 + \beta_1 x_1 + \epsilon$
+
+and you add another feature $x_2$, the model becomes:
+
+$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon$
+
+This _will always_ fit the training data at least as well, but the **new parameter might just be fitting noise**, not signal — hurting performance on new data.
+
+> So, **more parameters = more flexible**, but **not always better** for prediction.
+
+---
+
+### 📈 2. **What is the F-statistic in Linear Regression?**
+
+#### 🎯 Purpose:
+
+Used to **test whether the regression model explains a significant amount of variance** in the dependent variable.
+
+#### ⚙️ Intuition:
+
+- It compares two things:
+    - **Explained variance** (how much of $y$ the model explains)
+    - **Unexplained variance** (residuals/noise)
+- If the explained variance is **much higher** than unexplained, the model is **statistically significant**.
+
+#### 📐 Formula:
+
+$$
+F = \frac{\text{Explained Variance per parameter}}{\text{Unexplained Variance per residual}} = \frac{\text{MSR}}{\text{MSE}} = \frac{\text{SSR}/p}{\text{SSE}/(n - p - 1)}
+$$
+Where:
+
+- **SSR**: Regression Sum of Squares (explained)
+- **SSE**: Error Sum of Squares (unexplained)
+- **p**: number of predictors
+- **n**: number of data points
+
+> A high F value → model is better than a null model (just the mean).
+
+---
+
+### 🧮 3. **Degrees of Freedom (DoF)**
+https://www.youtube.com/watch?v=Cm0vFoGVMB8&ab_channel=CrashCourse
+
+#### In Regression:
+
+- **Total DoF** = $n - 1$
+    
+- **Regression DoF** = $p$ (number of predictors)
+    
+- **Residual DoF** = $n - p - 1$
+    
+
+#### 🔍 Why It Matters:
+
+- Degrees of freedom are used to **standardize** variance (mean squares) so you can compare them — like in the F-statistic.
+    
+- More parameters = fewer residual degrees of freedom → which means **you’re using up data** to fit the model.
+    
+
+---
+
+### 🔁 Summary
+
+| Concept                       | Meaning                                                 |
+| ----------------------------- | ------------------------------------------------------- |
+| **Adding features**           | Can increase training R², but risks overfitting.        |
+| **F-statistic**               | Tests whether the model explains significant variation. |
+| **Explained vs. Unexplained** | SSR vs. SSE (signal vs. noise)                          |
+| **Degrees of freedom**        | Track how much data is used for estimating vs. testing. |
 
