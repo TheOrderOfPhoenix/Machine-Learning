@@ -432,4 +432,4 @@ Colab doesn't support full Jupyter extensions, but there are *hacks*:
 
 ## NumPy
 
-Check [this link]() to find some notebooks to learn more about **NumPy**
+Check this [Link](https://github.com/AminGh05/NumPyTut) to find some notebooks to learn more about **NumPy**
