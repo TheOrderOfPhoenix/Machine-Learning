@@ -604,14 +604,16 @@ Includes:
 
 ### ✅ **4. Types of Learning / Regression**
 
-#### **Univariate regression**
+#### **Univariate Regression**
 
-Regression with a single input feature.
+> Regression where there is **one input feature (independent variable)** and **one output variable (dependent variable)**.
 
-#### **Multivariate regression**
+#### **Multivariate Regression**
 
-Regression with multiple input features.
+> Regression where there is **one or more input features**, and **multiple output variables** (i.e., the target is a vector).
+#### **Multiple Regression**
 
+> Regression with **multiple input features** and **a single output variable**.
 #### **Where did "regression" come from?**
 
 The term comes from **“regression to the mean”** in statistics (Francis Galton, 19th century), describing how children’s heights tended to “regress” (move closer) to the average height of the population.
