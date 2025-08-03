@@ -5,10 +5,11 @@
 ### Data Analysis & Visualization Playlist 
 [link](https://youtube.com/playlist?list=PL9n0l8rSshSnragNblKDBsT8Xu3otp3jA&feature=shared)
 
-## 📖 Articles
+## 📖 Articles / Slides / Notebooks
 https://www.kaggle.com/learn
 https://www.w3schools.com/python/pandas/default.asp
 https://www.w3schools.com/python/numpy/default.asp
+https://github.com/guipsamora/pandas_exercises
 
 ## 📚 Books
 
