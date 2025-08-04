@@ -17,8 +17,31 @@ level: beginner
 
 ## 📘 Key Concepts
 
+Fundamentals needed to easily continue this path are:
+
+- Basic **Python** knowledge
+- Know how to write algorithms
+- Good knowledge of **Python** data structures
+- Key concepts of **Numpy**, **Pandas**, **Matplotlib** 
+
+Note: **Seaborn** package can also be used to visualize data better 
+
 ## 🔎 Questions / Confusions
+
+Packages like **Keras** & **Tensorflow** are mostly used for *deep learning* models and you don't need to learn them from start.
+
+**Sickit Learn** will be used a lot to develop models and work with data.
 
 ## 👥 Contributors' Notes
 
+The scripting language **R** is also very helpful and simple for data manipulation
+
 ## ✅ Learning Checklist
+
+- [ ] Learn basics of Python syntax
+- [ ] Get used to *Conda* or *venv*
+- [ ] Use **Google Collab**
+- [ ] Learn NumPy
+- [ ] Learn Pandas
+- [ ] Learn Matplotlib
+ 
